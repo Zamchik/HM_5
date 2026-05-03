@@ -1,4 +1,3 @@
-// src/contexts/ThemeContext.tsx
 import { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 
@@ -31,6 +30,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTheme = () => {
     const ctx = useContext(ThemeContext);
     if (!ctx) throw new Error('Error');
