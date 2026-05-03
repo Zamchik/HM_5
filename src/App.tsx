@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import UseContextTheme from './tasks/1.1-ThemeContext/UseThemeContext'
 import { ThemeProvider } from './tasks/1.1-ThemeContext/ThemeContext'
-import UseCallbackCounter from './tasks/1.2-Test/UseCallbackCounter'
+import UseCallbackCounter from './tasks/1.2-UseCallbackCounter/UseCallbackCounter'
+import UseMemo from './tasks/1.3-UseMemo/UseMemo'
 
 const TASKS = [
   { id: '1.1', label: '1.1 useContext', component: <ThemeProvider><UseContextTheme /></ThemeProvider> },
   { id: '1.2', label: '1.2 useCallback', component: <UseCallbackCounter /> },
-  // { id: '1.3', label: '1.3 useMemo',       component: <UseMemo /> },
+  { id: '1.3', label: '1.3 useMemo',       component: <UseMemo /> },
   // { id: '1.4', label: '1.4 useRef',        component: <UseRefDemo /> },
   // { id: '1.5', label: '1.5 useReducer',    component: <UseReducerTodo /> },
   // { id: '1.6', label: '1.6 React.memo',    component: <ReactMemoDemo /> },
