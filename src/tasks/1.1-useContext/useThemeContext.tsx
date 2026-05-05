@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from './ThemeContext';
+import { useTheme } from './themeContext';
 
 const UseContextTheme: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
@@ -15,6 +15,7 @@ const UseContextTheme: React.FC = () => {
   return (
     <>
     <div style={panelStyle}>
+      <h2>1.1 - useContext</h2>
       <p>Текущая тема: <strong>{theme}</strong></p>
       <button onClick={toggleTheme}>Переключить тему</button>
     </div>

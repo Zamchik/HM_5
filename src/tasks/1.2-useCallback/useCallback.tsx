@@ -22,6 +22,7 @@ export default function UseCallbackCounter() {
 
     return (
         <div>
+            <h2>1.2 - useCallback</h2>
             <h2>Счётчик 1: мемоизированный колбэк {count1}</h2>
             <h2>Счётчик 2: немемоизированный колбэк {count2}</h2>
             <p>Другое состояние (для провокации рендера): {otherState ? 'true' : 'false'}</p>
@@ -30,9 +31,9 @@ export default function UseCallbackCounter() {
             </button>
             <hr />
             <h3>Кнопки изменения счётчиков:</h3>
-            {/* Кнопка с мемоизированным колбэком — НЕ перерисовывается при изменении otherState */}
+            {/* не перерисовывается при изменении otherState */}
             <ActionButton onClick={incrementMemoized} label="useCallback (мемоизирован)" />
-            {/* Кнопка с немемоизированным колбэком — перерисовывается при каждом рендере родителя */}
+            {/*перерисовывается при каждом рендере родителя */}
             <ActionButton onClick={incrementNotMemoized} label="Без useCallback (новый колбэк)" />
             <hr />
         </div>

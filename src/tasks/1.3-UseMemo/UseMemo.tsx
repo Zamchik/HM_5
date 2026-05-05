@@ -31,7 +31,7 @@ export default function UseMemo() {
 
   return (
     <div>
-      <h2>1.3 — useMemo</h2>
+      <h2>1.3 - useMemo</h2>
       <p>
         <button onClick={regenerateArray}>Сгенерировать новый массив</button>
         <button onClick={() => setOtherState(s => s + 1)}>
