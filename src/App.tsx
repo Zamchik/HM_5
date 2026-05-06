@@ -9,6 +9,7 @@ import ReactMemoDemo from './tasks/1.6-ReactMemo/ReactMemo'
 import CombinedHooks from './tasks/1.7-CombinedHooks/CombinedHooks'
 import BadForm from './tasks/2.1-BadForm/2.1-BadForm'
 import GoodFormRHF from './tasks/2.2-GoodFormRHF/GoodFormRHF'
+import GoodFormFormik from './tasks/2.3-GoodFormFormik/GoodFormFormik'
 
 const TASKS = [
   { id: '1.1', label: '1.1 useContext', component: <ThemeProvider><UseContextTheme /></ThemeProvider> },
@@ -20,7 +21,7 @@ const TASKS = [
   { id: '1.7', label: '1.7 CombinedHooks', component: <CombinedHooks /> },
   { id: '2.1', label: '2.1 Bad Form',      component: <BadForm /> },
   { id: '2.2', label: '2.2 RHF + Zod',     component: <GoodFormRHF /> },
-  // { id: '2.3', label: '2.3 Formik + Yup',  component: <GoodFormFormik /> },
+  { id: '2.3', label: '2.3 Formik + Yup',  component: <GoodFormFormik /> },
 ]
 
 export default function App() {
