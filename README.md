@@ -1,73 +1,21 @@
-# React + TypeScript + Vite
+1) Чем useCallback отличается от useMemo? Когда использовать каждый? 
+Ответ - useCallBack c ним мы мемоизируем обычные функции, чтоб они не перерендеривались. А useMemo  мемоизированное значение. UseCallback используем, когда передаем колбэк в мемоизированный дочерний компонент. UseMemo когда у есть дорогое вычисление, которое не нужно пересчитывать при каждом рендере.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+2) Почему React.memo не помогает, если колбэк передаётся без useCallback? 
+Ответ - React.memo сравнивает ссылки на пропсы, а обычная функции пересоздаются при каждом рендере и ссылка на неё меняется. useCallback сохраняет ссылку неизменной.
 
-Currently, two official plugins are available:
+3) Когда стоит использовать useReducer вместо useState? По какому признаку вы принимаете это решение? 
+Ответ - UseState когда простые состояния (примитивы, небольшие массивы и объекты). useReduce когда логика обновления состояния сложная(Состояния зависящие от предыдущих)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+4) Что такое useRef и почему изменение .current не вызывает ре-рендер? 
+Ответ - useRef – это объект который сохраняет своё значение между рендерами. А не ре-рендерит потому, что React следит только за состояниями state, но не за ref.
 
-## React Compiler
+5) Зачем useContext нужен провайдер (Provider)? Что произойдёт, если использовать useContext вне провайдера?
+Ответ - Context.Provider определяет, какое значение будет доступно дочерним компонента. Без провайдера useContext вернёт то значение, которое было передано в createContext(вроде undefined)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+6) В чём разница между controlled и uncontrolled инпутом? Как React Hook Form использует uncontrolled подход? 
+Ответ - controlled значение инпута хранится в useState и обновляется через onChange. Любой ввод вызывает ререндер. uncontrolled значение инпута хранится в DOM, доступ через ref. Ререндеров при вводе нет.
+RHF использует ref, что не вызывает частые перерендеры
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+7) Почему zodResolver — это не валидация на сервере? Где ещё нужно валидировать данные? 
+Ответ - Он выполняет валидацию в браузере на основе Zod-схемы. Сервер не должен доверять клиентским данным, потому что они могут быть подменены злоумышленником. Также валидация на клиенте нужна на беке для безопасности данных.
